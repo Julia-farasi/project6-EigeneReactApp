@@ -68,18 +68,68 @@
 // // }
 
 // // export default App;
+// import React from "react";
+// import StockDashboard from "./components/StockDashboard";
+
+// function App() {
+//   return (
+//     <>
+//       <h1 className="text-3xl font-bold text-center font-segoe mt-4">
+//         Finanzdaten-Viewer
+//       </h1>
+//       <StockDashboard />
+//     </>
+//   );
+// }
+
+// export default App;
+//------------------
+// src/App.jsx
+// src/App.jsx
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
 import StockDashboard from "./components/StockDashboard";
+import "./styles/NavBar.css";
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold text-center font-segoe mt-4">
-        Finanzdaten-Viewer
-      </h1>
-      <StockDashboard />
-    </>
+    <Router>
+      <header className="navbar">
+        <h1>Finanzdaten-Viewer</h1>
+        <nav className="navbar-links">
+          <NavLink
+            to="/"
+            // className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/stocks"
+            // className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Stock Dashboard
+          </NavLink>
+        </nav>
+      </header>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/stocks" element={<StockDashboard />} />
+      </Routes>
+    </Router>
   );
 }
+
+const Home = () => (
+  <div className="text-center mt-10">
+    <h2>Willkommen zum Finanzdaten-Viewer 📈</h2>
+    <p>Nutze das Menü, um Aktienkurse zu analysieren.</p>
+  </div>
+);
 
 export default App;

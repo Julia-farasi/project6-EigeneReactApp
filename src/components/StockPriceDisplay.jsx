@@ -84,7 +84,7 @@ import "../styles/StockDisplay.css";
 
 const StockPriceDisplay = ({ symbol }) => {
   const [data, setData] = useState(null);
-  const API_KEY = "";
+  const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -99,7 +99,7 @@ const StockPriceDisplay = ({ symbol }) => {
     };
     fetchData();
   }, [symbol]);
-
+  console.log("Neu hier", data);
   if (!data || !data.values) return null;
 
   const priceData = data.values[0];
@@ -108,16 +108,16 @@ const StockPriceDisplay = ({ symbol }) => {
     <div className="stock-card">
       <h2>{symbol} Aktienkurs</h2>
       <p>
-        <strong>Aktueller Kurs:</strong> {priceData.close} €
+        <strong>Aktueller Kurs:</strong> {priceData.close} $
       </p>
       <p>
-        <strong>Tageshoch:</strong> {priceData.high} €
+        <strong>Tageshoch:</strong> {priceData.high} $
       </p>
       <p>
-        <strong>Tagestief:</strong> {priceData.low} €
+        <strong>Tagestief:</strong> {priceData.low} $
       </p>
       <p>
-        <strong>Handelsvolumen:</strong> {priceData.volume}
+        <strong>Handelsvolumen:</strong> {priceData.volume} $
       </p>
     </div>
   );

@@ -7,12 +7,11 @@ const StockDashboard = () => {
   const [symbols, setSymbols] = useState([]);
 
   const handleSymbolSelect = (newSymbol) => {
-    // Nur hinzufügen, wenn nicht schon vorhanden
-    if (!symbols.includes(newSymbol)) {
+    if (newSymbol && !symbols.includes(newSymbol)) {
       setSymbols((prev) => [...prev, newSymbol]);
     }
   };
-
+  console.log("here entlang", symbols);
   return (
     <div className="dashboard-container">
       <StockSearch onSymbolSelect={handleSymbolSelect} />
