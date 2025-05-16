@@ -81,6 +81,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/StockDisplay.css";
+import tickerMap from "../data/tickerMap.json";
 
 const StockPriceDisplay = ({ symbol }) => {
   const [data, setData] = useState(null);
@@ -103,10 +104,13 @@ const StockPriceDisplay = ({ symbol }) => {
   if (!data || !data.values) return null;
 
   const priceData = data.values[0];
+  const companyName = tickerMap[symbol] || "Unbekannt";
 
   return (
     <div className="stock-card">
-      <h2>{symbol} Aktienkurs</h2>
+      <h2>
+        {symbol} – {companyName} Aktienkurs
+      </h2>
       <p>
         <strong>Aktueller Kurs:</strong> {priceData.close} $
       </p>
