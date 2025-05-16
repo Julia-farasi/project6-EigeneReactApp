@@ -31,12 +31,12 @@
 }
 
 .navbar-links a:hover {
-  background-color: #1e293b; /* slate-800 */
+  background-color: #00acc1; /* slate-800 */
   color: white;
 }
 
 .navbar-links a.active {
-  background-color: #facc15; /* amber-400 */
+  background-color: #81e4a7; /* amber-400 */
   color: #1e293b; /* slate-800 */
   font-weight: bold;
 }

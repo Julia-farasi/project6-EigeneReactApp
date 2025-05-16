@@ -15,8 +15,8 @@
 }
 
 .select__control--is-focused {
-  border-color: #facc15; /* amber */
-  box-shadow: 0 0 0 2px #facc15;
+  border-color: #81e4a7; /* amber */
+  box-shadow: 0 0 0 2px #81e4a7;
 }
 
 .select__menu {
@@ -35,7 +35,7 @@
 
 .select__option--is-focused {
   background-color: #334155;
-  color: #facc15;
+  color: #81e4a7;
 }
 
 .select__placeholder {
@@ -43,5 +43,5 @@
 }
 
 .select__single-value {
-  color: #facc15; /* amber */
+  color: #81e4a7; /* amber */
 }
