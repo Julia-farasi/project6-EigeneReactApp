@@ -82,6 +82,25 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/StockDisplay.css";
 import tickerMap from "../data/tickerMap.json";
+import FavoriteStar from "./FavoriteStar";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend
+);
 
 const StockPriceDisplay = ({ symbol }) => {
   const [data, setData] = useState(null);
@@ -105,9 +124,41 @@ const StockPriceDisplay = ({ symbol }) => {
 
   const priceData = data.values[0];
   const companyName = tickerMap[symbol] || "Unbekannt";
+  const reversedValues = [...data.values].reverse();
+
+  const chartData = {
+    labels: reversedValues.map((entry) => entry.datetime),
+    datasets: [
+      {
+        label: `${symbol} Kurs`,
+        data: reversedValues.map((entry) => parseFloat(entry.close)),
+        fill: false,
+        borderColor: "#facc15", // amber
+        backgroundColor: "#facc15",
+        tension: 0.3,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { mode: "index", intersect: false },
+    },
+    scales: {
+      x: {
+        ticks: { color: "#94a3b8", maxTicksLimit: 5 }, // slate-400
+      },
+      y: {
+        ticks: { color: "#94a3b8" },
+      },
+    },
+  };
 
   return (
     <div className="stock-card">
+      <FavoriteStar symbol={symbol} />
       <h2>
         {symbol} – {companyName} Aktienkurs
       </h2>
@@ -123,6 +174,9 @@ const StockPriceDisplay = ({ symbol }) => {
       <p>
         <strong>Handelsvolumen:</strong> {priceData.volume} $
       </p>
+      <div style={{ marginTop: "1rem" }}>
+        <Line data={chartData} options={chartOptions} />
+      </div>
     </div>
   );
 };
