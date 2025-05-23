@@ -1,4 +1,4 @@
-// 📦 React Router Komponenten importieren
+//  React Router Komponenten importieren
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,27 +8,17 @@ import {
 import StockDashboard from "./components/StockDashboard";
 import "./styles/NavBar.css";
 import FavoritesPage from "./components/FavoritesPage";
-// 🖼 Begrüßungsbild importieren
+// Begrüßungsbild importieren
 import welcomeImage from "../public/1.png";
-// 🧠 Hauptkomponente der App – enthält Router + Navigation + Seitenrouten
+// Hauptkomponente der App – enthält Router + Navigation + Seitenrouten
 function App() {
   return (
     <Router>
       <header className="navbar">
         <h1>Finanzdaten-Viewer</h1>
         <nav className="navbar-links">
-          <NavLink
-            to="/"
-            // className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/stocks"
-            // className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Stock Dashboard
-          </NavLink>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/stocks">Stock Dashboard</NavLink>
           <NavLink to="/favorite">Favoriten</NavLink>
         </nav>
       </header>
@@ -41,7 +31,7 @@ function App() {
     </Router>
   );
 }
-// 🏠 Home-Komponente mit Begrüßungstext und Bild
+//  Home-Komponente mit Begrüßungstext und Bild
 const Home = () => (
   <div className="text-center mt-10">
     <h2>Willkommen zum Finanzdaten-Viewer 📈</h2>
@@ -51,10 +41,9 @@ const Home = () => (
       alt="Begrüßungsbild"
       className="mx-auto rounded-lg shadow-md welcome-img"
     />
-    {/* <div className="image">
-      <img src="./src/1.png" alt="Image"></img>
-    </div> */}
   </div>
 );
 
 export default App;
+
+// The Comments are created with help of Chatgpt for better understanding

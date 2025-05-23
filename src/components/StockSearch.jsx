@@ -32,14 +32,14 @@ const customStyles = {
   }),
 };
 //-------
-// 🧠 Komponente zum Auswählen eines Aktien-Symbols per Dropdown
+//  Komponente zum Auswählen eines Aktien-Symbols per Dropdown
 const StockSearch = ({ onSymbolSelect }) => {
-  // 🔁 Optionen bauen aus JSON-Daten (symbol & name)
+  //  Optionen bauen aus JSON-Daten (symbol & name)
   const options = Object.entries(tickerMap).map(([symbol, name]) => ({
     value: symbol,
     label: `${symbol} - ${name}`,
   }));
-  // 📤 Wenn Option gewählt wird ➝ nach oben weitergeben
+  //  Wenn Option gewählt wird ➝ nach oben weitergeben
   const handleChange = (selectedOption) => {
     if (selectedOption) {
       onSymbolSelect(selectedOption.value);
@@ -48,7 +48,7 @@ const StockSearch = ({ onSymbolSelect }) => {
 
   return (
     <div className="select-container">
-      {/* 📊 React-Select Dropdown mit Styling & Datenbindung */}
+      {/*  React-Select Dropdown mit Styling & Datenbindung */}
       <Select
         options={options}
         onChange={handleChange}
@@ -64,6 +64,7 @@ const StockSearch = ({ onSymbolSelect }) => {
 
 export default StockSearch;
 
+// Die Kommentare sind mit Hilfe von Chatgpt eingefügt
 // tickerMap.json	Enthält "AAPL": "Apple Inc.", usw.
 // options	Wandelt die JSON in Dropdown-Optionen um
 // handleChange()	Gibt ausgewähltes Symbol an onSymbolSelect() weiter

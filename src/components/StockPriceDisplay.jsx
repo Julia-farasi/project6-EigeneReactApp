@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/StockDisplay.css";
 import tickerMap from "../data/tickerMap.json";
 import FavoriteStar from "./FavoriteStar";
-// 📈 ChartJS + React-Wrapper
+//  ChartJS + React-Wrapper
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -14,7 +14,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-// 🔧 Notwendig für die Initialisierung von ChartJS-Komponenten
+// Notwendig für die Initialisierung von ChartJS-Komponenten
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,11 +23,11 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-// 📦 Hauptkomponente für eine einzelne Aktienkarte
+// Hauptkomponente für eine einzelne Aktienkarte
 const StockPriceDisplay = ({ symbol }) => {
   const [data, setData] = useState(null);
-  const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e"; // 🔐 API-Key für TwelveData
-  // 📡 API-Daten holen, wenn symbol sich ändert
+  const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e"; // API-Key für TwelveData
+  // API-Daten holen, wenn symbol sich ändert
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,16 +42,16 @@ const StockPriceDisplay = ({ symbol }) => {
     fetchData();
   }, [symbol]);
   console.log("Neu hier", data);
-  // ⏳ Warten bis Daten da sind
+  // Warten bis Daten da sind
   if (!data || !data.values) return null;
-  // 📈 Aktuelle Werte + Firmenname
+  // Aktuelle Werte + Firmenname
   const priceData = data.values[0];
   const companyName = tickerMap[symbol] || "Unbekannt";
-  // 🔁 Werte umdrehen für richtigen Zeitverlauf (älteste ➝ neueste)
+  // Werte umdrehen für richtigen Zeitverlauf (älteste ➝ neueste)
   const reversedValues = [...data.values].reverse();
 
   console.log("DATEN HERE Check", data);
-  // 🔢 Chart-Datenformat für react-chartjs-2
+  // Chart-Datenformat für react-chartjs-2
   const chartData = {
     labels: reversedValues.map((entry) => entry.datetime),
     datasets: [
@@ -65,7 +65,7 @@ const StockPriceDisplay = ({ symbol }) => {
       },
     ],
   };
-  // ⚙️ Chart-Optionen (keine Legende, hellgraue Achsen)
+  //  Chart-Optionen (keine Legende, hellgraue Achsen)
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -81,11 +81,11 @@ const StockPriceDisplay = ({ symbol }) => {
       },
     },
   };
-  // 📦 Komplette Card-Ansicht inkl. Favoriten-Stern und Chart
+  // Komplette Card-Ansicht inkl. Favoriten-Stern und Chart
   return (
     <div className="stock-card">
       <FavoriteStar symbol={symbol} />
-      {/* 🔴 klickbarer Favoritenstern */}
+      {/* klickbarer Favoritenstern */}
       <h2>
         {symbol} – {companyName} Aktienkurs
       </h2>
@@ -101,7 +101,7 @@ const StockPriceDisplay = ({ symbol }) => {
       <p>
         <strong>Handelsvolumen:</strong> {priceData.volume} $
       </p>
-      {/* 📈 Live Chart */}
+      {/* Live Chart */}
       <div style={{ marginTop: "1rem" }}>
         <Line data={chartData} options={chartOptions} />
       </div>
@@ -111,9 +111,14 @@ const StockPriceDisplay = ({ symbol }) => {
 
 export default StockPriceDisplay;
 
+// Die Kommentare sind mit Hilfe von Chatgpt eingefügt
 // The Comments are created with help of Chatgpt
 // useEffect	Lädt Kursdaten von TwelveData, wenn das Symbol sich ändert
 // priceData	Zeigt die aktuellsten Kurswerte (close, high, low, volume)
 // FavoriteStar	Ermöglicht das Setzen/Entfernen des Symbols als Favorit (inkl. LocalStorage)
 // chartData/chartOptions	Visualisiert den Kursverlauf als smoothe gelbe Linie
 // tickerMap	Zeigt statt "AAPL" auch "Apple Inc." an
+// ✔️ Karte mit Kursdaten
+// ✔️ Firmenname aus JSON
+// ✔️ Chart-Visualisierung
+// ✔️ Favoriten-Stern mit Speicherfunktion
