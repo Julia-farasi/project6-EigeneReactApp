@@ -9,7 +9,7 @@ import StockDashboard from "./components/StockDashboard";
 import "./styles/NavBar.css";
 import FavoritesPage from "./components/FavoritesPage";
 // Begrüßungsbild importieren
-import welcomeImage from "../public/1.png";
+import welcomeImage from "./data/1.png";
 // Hauptkomponente der App – enthält Router + Navigation + Seitenrouten
 function App() {
   return (
