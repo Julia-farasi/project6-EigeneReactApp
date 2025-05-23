@@ -2,7 +2,7 @@
 
 // const StockPriceDisplay = ({ symbol }) => {
 //   const [data, setData] = useState(null);
-//   const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e"; // Ersetze mit deinem API-Schlüssel
+//   const API_KEY = ""; 
 
 //   useEffect(() => {
 //     const fetchData = async () => {
@@ -34,7 +34,7 @@
 
 // const StockPriceDisplay = ({ symbol }) => {
 //   const [data, setData] = useState(null);
-//   const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e"; // Replace with your API key
+//   const API_KEY = ""; 
 
 //   useEffect(() => {
 //     const fetchData = async () => {
