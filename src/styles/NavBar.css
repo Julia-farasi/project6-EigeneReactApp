@@ -40,3 +40,14 @@
   color: #1e293b; /* slate-800 */
   font-weight: bold;
 }
+image {
+  width: 30em;
+  height: 20em;
+}
+.welcome-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 1rem;
+}

@@ -87,3 +87,41 @@ body {
   margin-right: auto;
   font-size: 16px;
 }
+.stock-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Favoritenseite */
+.favorites-page {
+  padding: 2rem;
+}
+
+/* Button Fallback */
+.button-clear {
+  background-color: #81e4a7; /* rot */
+  /* color: white; */
+  /* padding: 0.5rem 1rem; */
+  /* border-radius: 0.375rem; */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  /* text-align: center; */
+  /* display: flex; */
+
+  color: #1e293b;
+  /* text-decoration: none; */
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.button-clear:hover {
+  background-color: #dc2626c1;
+  color: white;
+}

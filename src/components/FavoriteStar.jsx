@@ -20,10 +20,11 @@ const FavoriteStar = ({ symbol }) => {
 
   const toggleFavorite = () => {
     const favorites = getFavorites();
+
     const updatedFavorites = favorites.includes(symbol)
       ? favorites.filter((fav) => fav !== symbol)
       : [...favorites, symbol];
-
+    // console.log("Hallo", updatedFavorites);
     setFavorites(updatedFavorites);
     setIsFavorite(!isFavorite);
   };
