@@ -26,7 +26,7 @@ ChartJS.register(
 // Hauptkomponente für eine einzelne Aktienkarte
 const StockPriceDisplay = ({ symbol }) => {
   const [data, setData] = useState(null);
-  const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e"; // API-Key für TwelveData
+  const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e"; // API-Key von TwelveData
   // API-Daten holen, wenn symbol sich ändert
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +41,7 @@ const StockPriceDisplay = ({ symbol }) => {
     };
     fetchData();
   }, [symbol]);
-  console.log("Neu hier", data);
+  // console.log("Neu hier,hier sind die DATA:", data);
   // Warten bis Daten da sind
   if (!data || !data.values) return null;
   // Aktuelle Werte + Firmenname

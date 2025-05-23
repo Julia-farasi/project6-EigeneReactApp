@@ -1,6 +1,7 @@
 import StockSearch from "./StockSearch";
 import StockPriceDisplay from "./StockPriceDisplay";
 import "../styles/StockDisplay.css";
+import { useEffect, useState } from "react";
 
 // StockDashboard zeigt alle ausgewählten Aktien als Karten an
 const StockDashboard = () => {
@@ -13,8 +14,8 @@ const StockDashboard = () => {
       setSymbols((prev) => [...prev, newSymbol]);
     }
   };
-  // 🐞 Debug-Ausgabe aller aktuellen Symbole
-  console.log("here entlang", symbols);
+  // Debug-Ausgabe aller aktuellen Symbole
+  // console.log("here entlang", symbols);
   return (
     <div className="dashboard-container">
       {/*  Dropdown zur Symbolauswahl */}
