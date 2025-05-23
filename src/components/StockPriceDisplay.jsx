@@ -112,7 +112,6 @@ const StockPriceDisplay = ({ symbol }) => {
 export default StockPriceDisplay;
 
 // Die Kommentare sind mit Hilfe von Chatgpt eingefügt
-// The Comments are created with help of Chatgpt
 // useEffect	Lädt Kursdaten von TwelveData, wenn das Symbol sich ändert
 // priceData	Zeigt die aktuellsten Kurswerte (close, high, low, volume)
 // FavoriteStar	Ermöglicht das Setzen/Entfernen des Symbols als Favorit (inkl. LocalStorage)
