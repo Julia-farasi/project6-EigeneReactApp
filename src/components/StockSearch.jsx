@@ -48,6 +48,7 @@ const StockSearch = ({ onSymbolSelect }) => {
 
   return (
     <div className="select-container">
+      <h2>Wähle hier gerne Deine Aktien aus:</h2>
       {/*  React-Select Dropdown mit Styling & Datenbindung */}
       <Select
         options={options}
