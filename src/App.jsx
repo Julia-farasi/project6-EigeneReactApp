@@ -1,10 +1,5 @@
 //  React Router Komponenten importieren
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import StockDashboard from "./components/StockDashboard";
 import "./styles/NavBar.css";
 import FavoritesPage from "./components/FavoritesPage";
@@ -17,9 +12,9 @@ function App() {
       <header className="navbar">
         <h1>Finanzdaten-Viewer</h1>
         <nav className="navbar-links">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/stocks">Stock Dashboard</NavLink>
-          <NavLink to="/favorite">Favoriten</NavLink>
+          <Link to="/">Home</Link>
+          <Link to="/stocks">Stock Dashboard</Link>
+          <Link to="/favorite">Favoriten</Link>
         </nav>
       </header>
 
@@ -35,12 +30,14 @@ function App() {
 const Home = () => (
   <div className="text-center mt-10">
     <h2>Willkommen zum Finanzdaten-Viewer 📈</h2>
-    <p>Nutze das Menü, um Aktienkurse zu analysieren.</p>
-    <img
-      src={welcomeImage}
-      alt="Begrüßungsbild"
-      className="mx-auto rounded-lg shadow-md welcome-img"
-    />
+    <p className="pb-4">Nutze das Menü, um Aktienkurse zu analysieren.</p>
+    <Link to="/stocks">
+      <img
+        src={welcomeImage}
+        alt="Begrüßungsbild"
+        className="mx-auto rounded-lg shadow-md welcome-img hover:scale-105 transition-transform duration-300 cursor-pointer"
+      />
+    </Link>
   </div>
 );
 

@@ -23,10 +23,28 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+//  Chart-Optionen (keine Legende, hellgraue Achsen)
+const chartOptions = {
+  responsive: true,
+  plugins: {
+    legend: { display: false },
+    tooltip: { mode: "index", intersect: false },
+  },
+  scales: {
+    x: {
+      ticks: { color: "#94a3b8", maxTicksLimit: 5 }, // slate-400
+    },
+    y: {
+      ticks: { color: "#94a3b8" },
+    },
+  },
+};
 // Hauptkomponente für eine einzelne Aktienkarte
 const StockPriceDisplay = ({ symbol }) => {
   const [data, setData] = useState(null);
-  const API_KEY = "27c5f7bf1c6b4c07a032c2a0954ff34e"; // API-Key von TwelveData
+  const API_KEY = import.meta.env.VITE_API_KEY; // API-Key von TwelveData
+  console.log("API_KEY:", import.meta.env.VITE_API_KEY);
   // API-Daten holen, wenn symbol sich ändert
   useEffect(() => {
     const fetchData = async () => {
@@ -48,7 +66,8 @@ const StockPriceDisplay = ({ symbol }) => {
   const priceData = data.values[0];
   const companyName = tickerMap[symbol] || "Unbekannt";
   // Werte umdrehen für richtigen Zeitverlauf (älteste ➝ neueste)
-  const reversedValues = [...data.values].reverse();
+  // const reversedValues = [...data.values].reverse();
+  const reversedValues = data.values.toReversed();
 
   console.log("DATEN HERE Check", data);
   // Chart-Datenformat für react-chartjs-2
@@ -65,22 +84,7 @@ const StockPriceDisplay = ({ symbol }) => {
       },
     ],
   };
-  //  Chart-Optionen (keine Legende, hellgraue Achsen)
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
-      tooltip: { mode: "index", intersect: false },
-    },
-    scales: {
-      x: {
-        ticks: { color: "#94a3b8", maxTicksLimit: 5 }, // slate-400
-      },
-      y: {
-        ticks: { color: "#94a3b8" },
-      },
-    },
-  };
+
   // Komplette Card-Ansicht inkl. Favoriten-Stern und Chart
   return (
     <div className="stock-card">
